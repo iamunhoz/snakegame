@@ -34,9 +34,10 @@ function expandSnake(amount) {
 	newSegments += amount
 }
 
-function onSnake(position) {
-	return snakeBody.some(segment => {
-		return position.x === segment.x && position.y === segment.y
+function onSnake(position, { ignoreHead = false } = {}) {
+	return snakeBody.some((segment, index) => {
+		if (ignoreHead && index === 0) return false
+		return equalPositions(segment, position)
 	})
 }
 
@@ -47,10 +48,24 @@ function addSegments() {
 	newSegments = 0
 }
 
+function equalPositions (pos1, pos2) {
+	return pos1.x === pos2.x && pos1.y === pos2.y
+}
+
+function getSnakeHead(){
+	return snakeBody[0]
+}
+
+function snakeBodyOverlap(){
+	return onSnake(snakeBody[0], { ignoreHead: true })
+}
+
 export { 
 	SNAKE_SPEED,
 	update,
 	draw,
 	expandSnake,
-	onSnake
+	onSnake,
+	getSnakeHead,
+	snakeBodyOverlap
  }
