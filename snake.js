@@ -11,8 +11,8 @@ const snakeBody = [
 ]
 
 function getSnakeSpeed() {
-	let fps = snakeBody.length * .75
-	if (fps < 6) fps = 3
+	let fps = snakeBody.length * .5
+	if (fps < 6) fps = 6
 	let snakeSpeed = 1 / fps
 	return snakeSpeed
 }
