@@ -59,7 +59,9 @@ function getSnakeHead(){
 }
 
 function snakeBodyOverlap(){
-	return onSnake(snakeBody[0], { ignoreHead: true })
+	if (snakeBody.length > 3) {
+		return onSnake(snakeBody[0], { ignoreHead: true })
+	} else return false
 }
 
 export { 
