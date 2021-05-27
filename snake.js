@@ -1,8 +1,7 @@
 import {getInputDirection} from './input.js'
 
 // set the dvisor to the desired FPS
-const FPS = 6
-const SNAKE_SPEED = 1 / FPS
+
 let newSegments = 0
 //each obj in this array creates a body segment for the snake using x-y coordinates
 const snakeBody = [
@@ -10,6 +9,13 @@ const snakeBody = [
 	{ x: 12, y: 11 },
 	{ x: 13, y: 11 }
 ]
+
+function getSnakeSpeed() {
+	let fps = snakeBody.length * .75
+	if (fps < 6) fps = 3
+	let snakeSpeed = 1 / fps
+	return snakeSpeed
+}
 
 function update() {
 	addSegments()
@@ -65,7 +71,7 @@ function snakeBodyOverlap(){
 }
 
 export { 
-	SNAKE_SPEED,
+	getSnakeSpeed,
 	update,
 	draw,
 	expandSnake,
