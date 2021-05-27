@@ -6,7 +6,9 @@ const SNAKE_SPEED = 1 / FPS
 let newSegments = 0
 //each obj in this array creates a body segment for the snake using x-y coordinates
 const snakeBody = [
-	{ x: 11, y: 11 }
+	{ x: 11, y: 11 },
+	{ x: 12, y: 11 },
+	{ x: 13, y: 11 }
 ]
 
 function update() {
